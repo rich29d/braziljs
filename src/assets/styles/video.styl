@@ -1,0 +1,42 @@
+.Videos__List
+  margin-top 30px
+
+  .Video
+    animation fadeInTop .5s ease
+    animation-fill-mode forwards
+    cursor pointer
+    margin-bottom 30px
+    opacity 0
+    width calc(33% - 20px)
+
+    +prefix-classes('Video__')
+      .Image
+        margin-bottom 12px
+        width 100%
+
+      .Title
+        font-size 19px
+        font-weight 600
+        margin-bottom 7px
+
+      .Channel,
+      .Views
+        font-size 18px
+
+.Videos__ListButton
+  margin 60px 0 90px 0
+  text-align center
+
+  button
+    background $danger
+    border none
+    color $primary
+    cursor pointer
+    font-size 13px
+    font-weight bold
+    outline none
+    height 39px
+    width 139px
+
+    &:active
+      transform scale(.95)
