@@ -1,4 +1,4 @@
-# vuex
+# Challenge Empiricus
 
 ## Project setup
 ```
