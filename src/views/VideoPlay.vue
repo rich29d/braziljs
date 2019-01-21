@@ -63,6 +63,7 @@ export default {
   watch: {
     videoId() {
       setTimeout(() => {
+        this.scrollToVideo();
         this.playVideo();        
       }, 50);
     },
@@ -97,7 +98,7 @@ export default {
         title: info.title,
         description: this.enterToBr(info.description),
         views,
-      }      
+      }
       
       this.loading = false;
     },
@@ -110,6 +111,12 @@ export default {
       const container = document.querySelector(".Sidebar .CustomScroll");
       const current = document.querySelector(".Sidebar .CustomScroll .Current");
       container.scrollTop = get(current, 'offsetTop', 0);
+    },
+    scrollToVideo() {
+      const body = document.querySelector('body, html');
+      const top = document.querySelector(".Video__Current").offsetTop
+
+      body.scrollTop = body.clientWidth > 765 ? top - 100 : top;
     },
     numberWithCommas(n) {
         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -127,9 +134,10 @@ export default {
       this.$router.replace(`/`);
     }, 
   },
-  async mounted() {
+  async mounted() {    
     await this.mountVideo();
     await this.playVideo();
+    this.scrollToVideo();
   }
 }
 </script>
