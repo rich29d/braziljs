@@ -16,7 +16,7 @@
         .Row
           .Wrap__Bottom.Center.Flex.Middle
             .Header__Logo.Flex.Middle
-              a.Logo( href = 'https://www.empiricus.com.br?xpromo=XE-ME-GGL-IE-X-X-SH-B-X' )
+              a.Logo( href = 'https://braziljs.org/' )
             .Menu__Pages
               ul.Flex.Middle
                 li( v-for = 'link in menu.pages' )
@@ -37,30 +37,30 @@ export default {
       menu: {
         pages: [
           {
-            description: 'QUEM SOMOS',
-            url: 'https://www.empiricus.com.br/?xpromo=XE-ME-GGL-IE-X-X-SH-B-X#',
+            description: 'EVENTOS',
+            url: 'https://braziljs.org/eventos/',
           },
           {
-            description: 'CONTEÚDO',
-            url: 'https://www.empiricus.com.br/conteudo/?xpromo=XE-ME-GGL-IE-X-X-SH-B-X',
+            description: 'ARTIGOS',
+            url: 'https://braziljs.org/artigos/',
           },
           {
-            description: 'ASSINATURAS',
-            url: 'https://www.empiricus.com.br/assinaturas/?xpromo=XE-ME-GGL-IE-X-X-SH-B-X',
+            description: 'VÍDEOS',
+            url: 'javascript:void(0)',
           },
           {
-            description: 'ATENDIMENTO',
-            url: 'https://www.empiricus.com.br/faq/?xpromo=XE-ME-GGL-IE-X-X-SH-B-X',
+            description: 'LOJA',
+            url: 'https://loja.braziljs.org/',
           },
         ],
         utils: [
           {
-            description: 'INSCREVER-SE',
-            url: 'javascript:void(0)',
+            description: 'SOBRE',
+            url: 'https://braziljs.org/sobre/',
           },
           {
-            description: 'ENTRAR',
-            url: 'https://publicacoes.empiricus.com.br/login?xpromo=XE-ME-GGL-IE-X-X-SH-B-X&_ga=2.214387934.896638024.1547932397-446072789.1547490339&_gac=1.119131899.1547932431.CjwKCAiAsoviBRAoEiwATm8OYHqwON6GMmvy6Dfs8yrKRZs6E2B3QaVcxP4HldElS_VfdzH1iGkrKBoC1Y8QAvD_BwE',
+            description: 'CONTATO',
+            url: 'https://braziljs.org/contato/',
           },
         ],
         mobile: [
@@ -75,14 +75,14 @@ export default {
             url: 'javascript:void(0)',
           },
           {
-            description: 'Inscreva-se',
+            description: 'SOBRE',
             className: 'Menu__MobileImage--signIn',
-            url: 'javascript:void(0)',
+            url: 'https://braziljs.org/sobre/',
           },
           {
-            description: 'Login',
+            description: 'CONTATO',
             className: 'Menu__MobileImage--login',
-            url: 'javascript:void(0)',
+            url: 'https://braziljs.org/contato/',
           },
         ]
       }
@@ -176,7 +176,7 @@ header
         max-width 1260px
 
       .Header__Logo .Logo
-        background url('../assets/images/logo-empiricus-black.svg') left center / contain no-repeat transparent
+        background url('../assets/images/braziljs-horizontal-logo-white.png') left center / contain no-repeat transparent
         display block
         height 43px
         margin-right 70px
@@ -214,7 +214,7 @@ header
             width 250px
 
           input
-            background url(../assets/images/ico-search.svg) center right 12px / 16px no-repeat $primary
+            background url(../assets/images/ico-search.svg) center right 12px / 16px no-repeat $grey
             border 1px solid $grey
             border-radius 20px
             height inherit

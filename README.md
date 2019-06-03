@@ -1,4 +1,4 @@
-# Challenge Empiricus
+# Videos BrazilJS
 
 ## Project setup
 ```

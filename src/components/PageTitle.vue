@@ -28,6 +28,7 @@ export default {
 
     .detail
       background-color #CF294B
+      border-radius 10px
       height 6px
       margin-top 25px
       width 20px

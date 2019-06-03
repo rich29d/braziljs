@@ -9,8 +9,8 @@
           @click = 'goToVideo(video.id)'
         )
           img.Video__Image( :src = 'video.image' )
+          .Video__Shadow( :style = 'getImageStyle(video.image)' )
           .Video__Title {{ video.title }}
-          .Video__Channel {{ video.channel }}
           .Video__Views( v-show = 'video.views' ) {{ video.views }} views
     .Row( v-show = 'showButtonLoadMore' )
       .Videos__ListButton
@@ -58,8 +58,11 @@ export default {
       'addVideo',
       'setNextPage'
       ]),
-    delayFadeIn(index) {
+    delayFadeIn(index = 0) {
       return `animation-delay: .${index}s;`
+    },
+    getImageStyle(src = '') {
+      return `background-image: url(${src})`
     },
     goToVideo(videoId) {
       this.$router.replace(`/play/${videoId}`);
@@ -68,7 +71,7 @@ export default {
       const params = {
         part: 'snippet',
         maxResults: 6,
-        playlistId: 'PLvjvRuk_jw5KDnbg8VtLrQ94zWOcc3yac',
+        playlistId: 'PLg2lQYZDBwOQDXKxy9yeqXG5njHbSHFFD',
       };
 
       if ( this.nextPage ) {

@@ -8,8 +8,7 @@
     .Row
       .Flex.MaxWidth.Center
         .W9.Video__Current
-          Loading.Center( v-show = 'loading' )
-          .Video( v-show = '!loading' )
+          .Video
             .IFrame
               youtube.W12(
                 fitParent = true
@@ -35,7 +34,6 @@ import VueYoutube from 'vue-youtube';
 import List from '@/components/List';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PageTitle from '@/components/PageTitle';
-import Loading from '@/components/Loading';
 
 Vue.use(VueYoutube);
 
@@ -46,7 +44,6 @@ export default {
     List,
     Breadcrumbs,
     PageTitle,
-    Loading,
   },
   props: {
     videoId: {
@@ -57,14 +54,14 @@ export default {
   data() {
     return {
       videoCurrent: {},
-      loading: false,
     }
   },
   watch: {
     videoId() {
       setTimeout(() => {
         this.scrollToVideo();
-        this.playVideo();        
+        this.mountVideo();
+        this.playVideo();
       }, 50);
     },
   },
@@ -87,7 +84,6 @@ export default {
       });
     },
     async mountVideo() {
-      this.loading = true;
       const resp = await this.loadVideo('snippet');
       const info = get(resp, 'data.items[0].snippet', null);
       const videoId = get(info, 'resourceId.videoId', null);
@@ -99,8 +95,6 @@ export default {
         description: this.enterToBr(info.description),
         views,
       }
-      
-      this.loading = false;
     },
     async getViews(videoId) {
       const resp = await this.loadVideo('statistics');
@@ -146,9 +140,10 @@ export default {
   @import '../assets/styles/variables.styl'
 
   .ButtonToBack
-    background #FFF
+    background transparent
     border 1px solid currentColor
-    color #9f0037
+    border-radius 15px
+    color $grey
     cursor pointer
     float right
     margin-top -56px
@@ -160,6 +155,11 @@ export default {
     .Sidebar
       margin-bottom 60px
       margin-top 30px
+
+    .IFrame
+      border-radius 10px
+      overflow hidden
+      display flex
 
     .Video__Current
       animation fadeInTop .5s ease
@@ -184,7 +184,7 @@ export default {
 
         .Views,
         .Description
-          font-size 12px
+          font-size 18px
 
         .Views
           margin-top 10px
@@ -226,15 +226,14 @@ export default {
         transition background .3s ease, padding .3s ease
 
         &.Current
-          background: #ffd3d3;
-          border-radius: 3px;
-          padding: 10px;
+          background $primary
+          border-radius 15px
+          padding 10px
 
         +prefix-classes('Video__')
           .Title
             font-size 14px
 
-          .Channel,
           .Views
             font-size 13px
 </style>

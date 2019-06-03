@@ -2,41 +2,13 @@
   footer.W12
     .Row
       .Footer__Menu.W12.Flex.SpaceBetween.Center
-        .Footer__Column
-          .Footer__MenuTitle SOBRE NÓS
+        .Footer__Column( v-for = 'column in menu' )
+          .Footer__MenuTitle {{ column.title }}
           .Flex
-            ul( v-for = 'column in menu.sobreNos' )
-              li( v-for = 'link in column' )
-                a( :href = 'link.url' ) {{ link.description }}
-        .Footer__Column.ContentLinks
-          .Footer__MenuTitle CONTEÚDO
-          .Flex
-            ul( v-for = 'column in menu.conteudo' )
-              li( v-for = 'link in column' )
-                a( :href = 'link.url' ) {{ link.description }}
-        .Footer__Column.ExternalLinks
-          .IconGroup
-            .Footer__MenuTitle PAGAMENTO
-            img(src = '//www.empiricus.com.br/wp-content/themes/empiricus_v2/assets/images/icons/ico-payment.png')
-          .IconGroup
-            .Footer__MenuTitle.W12 SEGURANÇA
-            .Flex.Middle
-              a(
-                v-for = 'link in menu.seguranca'
-                :href = 'link.url'
-              )
-                img( :src = 'link.image' )
-          .IconGroup.IconSocial
-            .Footer__MenuTitle EMPIRICUS NAS REDES
-            .Flex.Middle
-              a(
-                v-for = 'link in menu.socialMidia'
-                :href = 'link.url'
-              )
-                img( :src = 'link.image' )
-    .Row.Footer__Endereco
-      | © 2017 - Empiricus Research - Todos os direitos reservados - Av. Brigadeiro Faria Lima, 3.477 -
-      | Torre B - 10º  Andar - CEP 04538-133 - Itaim Bibi - São Paulo
+            ul
+              li( v-for = 'link in column.links' )
+                a( :href = 'link.url' ) {{ link.description }}     
+    .Row.Footer__Endereco Todos os direitos reservados
 </template>
 
 <script>
@@ -44,146 +16,84 @@ export default {
   name: 'Footer',
   data() {
     return {
-      menu: {
-        sobreNos: [
-          [
+      menu: [
+        {
+          title: 'CONF',
+          links: [
             {
-              description: 'Home',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/edicoes-anteriores/',
+              description: 'Edições anteriores',
             },
             {
-              description: 'A Empiricus',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/por-que-devo-ir-braziljs/',
+              description: 'Por que devo ir na BrazilJS',
             },
             {
-              description: 'Analistas',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Assinaturas',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/codigo-de-conduta/',
+              description: 'Código de Conduta',
             },
           ],
-          [
+        },
+        {
+          title: 'NOSSAS INICIATIVAS',
+          links: [
             {
-              description: 'Atendimentos',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/eventos',
+              description: 'Eventos',
             },
             {
-              description: 'Disclosure',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/artigos/',
+              description: 'Portal e blog de notícias',
             },
             {
-              description: 'Política de Privacidade',
-              url: 'javascript:void(0)',
+              url: 'https://loja.braziljs.org/',
+              description: 'Loja',
             },
             {
-              description: 'Trabalhe na Empiricus',
-              url: 'javascript:void(0)',
-            },
-          ],
-        ],
-        conteudo: [
-          [
-            {
-              description: 'Começamos a investir',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Ações',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Renda Fixa',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Cripmoedas',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/newsletter/',
+              description: 'Newsletter',
             },
           ],
-          [
+        },
+        {
+          title: 'NA COMUNIDADE',
+          links: [
             {
-              description: 'Dividendos',
-              url: 'javascript:void(0)',
+              url: 'https://braziljs.org/artigos/',
+              description: 'Artigos',
             },
             {
-              description: 'Fundos',
-              url: 'javascript:void(0)',
+              url: 'https://github.com/braziljs',
+              description: 'Github',
             },
             {
-              description: 'Em Imóveis',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'No Exterior',
-              url: 'javascript:void(0)',
-            },
-          ],
-          [
-            {
-              description: 'Newletter',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Daily',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Vídeos',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Cotações',
-              url: 'javascript:void(0)',
-            },
-            {
-              description: 'Dicionários de Economia',
-              url: 'javascript:void(0)',
+              url: 'https://now-examples-slackin-vvjogtwzcf.now.sh/',
+              description: 'Discussão',
             },
           ],
-        ],
-        seguranca: [
-          {
-            url: 'https://www.rapidssl.com/',
-            image: '//www.empiricus.com.br/wp-content/themes/empiricus_v2/assets/images/icons/ico-rapidssl.png',
-          },
-          {
-            url: 'https://www.fcontrol.com.br/',
-            image: '//www.empiricus.com.br/wp-content/themes/empiricus_v2/assets/images/icons/FControl_Logo.gif',
-          },
-          {
-            url: 'https://safeweb.norton.com/report/show?url=www.empiricus.com.br',
-            image: '//www.empiricus.com.br/wp-content/themes/empiricus_v2/assets/images/icons/ico-norton.png',
-          },
-          {
-            url: 'https://transparencyreport.google.com/safe-browsing/search?url=www.empiricus.com.br&hl=pt-PT',
-            image: '//www.empiricus.com.br/wp-content/themes/empiricus_v2/assets/images/icons/ico-google-safe.png',
-          },
-        ],
-        socialMidia: [
-          {
-            url: 'https://www.youtube.com/c/empiricus',
-            image: require('@/assets/images/youtube.svg'),
-          },
-          {
-            url: 'https://facebook.com/empiricus',
-            image: require('@/assets/images/linkedin.svg'),
-          },
-          {
-            url: 'https://www.linkedin.com/company/empiricus_/',
-            image: require('@/assets/images/instagram.svg'),
-          },
-          {
-            url: 'https://www.instagram.com/empiricus/',
-            image: require('@/assets/images/facebook.svg'),
-          },
-          {
-            url: 'https://twitter.com/empiricus/',
-            image: require('@/assets/images/twitter.svg'),
-          },
-        ],
-      },
+        },
+        {
+          title: 'INSTITUCIONAL',
+          links: [
+            {
+              url: 'https://braziljs.org/sobre/',
+              description: 'Sobre',
+            },
+            {
+              url: 'https://braziljs.org/patrocine/',
+              description: 'Patrocine',
+            },
+            {
+              url: 'https://braziljs.org/contato/',
+              description: 'Contato',
+            },
+            {
+              url: 'https://nasc.io/',
+              description: 'Nasc',
+            },
+          ],
+        },
+      ],
     }
   }
 }
@@ -193,17 +103,17 @@ export default {
 @import '../assets/styles/variables.styl'
 
 footer
-  background $secundary
+  background $primary
   padding-top 20px
 
   @media screen and (max-width $small)
     padding-bottom 80px
 
   .Footer__Menu
-    max-width 1260px
+    max-width 960px
 
   .Footer__MenuTitle
-    color $primary
+    color $secundary
     font-family Lato
     font-size 12px
     font-weight bold
